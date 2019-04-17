@@ -8,6 +8,7 @@ import com.vmarienkov.beers.domain.interactor.GetAllBeersUseCase
 import com.vmarienkov.beers.domain.repository.BeersRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class AppModule(private val context: Context) {
@@ -24,6 +25,7 @@ class AppModule(private val context: Context) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.punkapi.com/v2/")
             .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
         retrofit.create(PunkService::class.java)

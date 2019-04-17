@@ -4,6 +4,6 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
 interface PunkService {
-    @GET("v2/beers")
+    @GET("beers/")
     fun getBeers(): Deferred<List<Response>>
 }
